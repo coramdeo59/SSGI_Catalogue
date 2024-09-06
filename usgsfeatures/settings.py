@@ -6,6 +6,12 @@ import dj_database_url
 # Load environment variables from .env file
 load_dotenv()
 
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'ssgi-catalogue-vtej.onrender.com',
+    # Add any other allowed hosts here
+]
 # Build paths inside the project
 BASE_DIR = Path(__file__).resolve().parent.parent
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
