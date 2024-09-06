@@ -12,7 +12,6 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     'ssgi-catalogue-vtej.onrender.com',
-    # Add any other allowed hosts here
 ]
 
 # SECURITY WARNING: keep the secret key used in production secret!
