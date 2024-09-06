@@ -73,6 +73,20 @@ WSGI_APPLICATION = 'usgsfeatures.wsgi.application'
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'your_db_name',
+        'USER': 'your_db_user',
+        'PASSWORD': 'your_db_password',
+        'HOST': 'your_db_host',  # Example: db.yourapp.render.com
+        'PORT': '5432',
+    }
+}
+
+#  postgresql://ssgi_catalogue_user:Bs6zpZn4S2XIWRF3LY3ABupMkzVJ4eCJ@dpg-crdeb1btq21c73d2msdg-a.oregon-postgres.render.com/ssgi_catalogue
+
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
