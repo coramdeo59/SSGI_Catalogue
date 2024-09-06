@@ -3,5 +3,5 @@ services:
     name: my-django-app
     env: python
     buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn myapp.wsgi"
+    startCommand: "gunicorn usgsfeatures.wsgi"
     postDeployCommand: "python manage.py migrate"
