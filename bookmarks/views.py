@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Bookmark
-from sidebarquery.models import ssgi
+from usgsfeatures.models import ssgi
 from django.contrib.auth.models import User
 import os
 
