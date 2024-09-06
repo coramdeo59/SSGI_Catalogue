@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap4',
     'bookmarks',
-    'usgsfeatures',
+    
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
