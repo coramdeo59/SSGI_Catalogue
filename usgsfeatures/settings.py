@@ -9,7 +9,13 @@ load_dotenv()
 # Build paths inside the project
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
 ALLOWED_HOSTS = ['*']
+
+
+# If using environment variables, ensure they are set correctly
+ALLOWED_HOSTS += os.getenv('ALLOWED_HOSTS', '').split(',')
+
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -17,7 +23,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'your-secret-key')
 
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
+
 
 # Application definition
 INSTALLED_APPS = [
