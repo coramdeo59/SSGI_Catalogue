@@ -1,6 +1,6 @@
 from django.db import models
 from authenticate.models import User
-from sidebarquery.models import ssgi
+from usgsfeatures.models import ssgi
 # Create your models here.
 class Bookmark(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
