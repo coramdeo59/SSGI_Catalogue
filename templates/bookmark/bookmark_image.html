@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+
+{% block content %}
+  <div style="margin-top:50px;">
+    <h2>Bookmark Image</h2>
+    <form method="POST" action="{% url 'bookmark' id %}">
+      {% csrf_token %}
+      <label>Description: </label>
+      <textarea name='desc'></textarea>
+      <button type="submit">Bookmark Image</button>
+    </form>
+  </div>
+{% endblock %}
+

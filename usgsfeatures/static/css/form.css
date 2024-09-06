@@ -1,0 +1,11 @@
+.center {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+  }
+  #map_folium {
+    position: fixed;
+    width: 100.0%;
+    height: 100.0%;
+}
+.leaflet-container { font-size: 1rem; }

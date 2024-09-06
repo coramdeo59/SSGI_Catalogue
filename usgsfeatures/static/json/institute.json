@@ -1,0 +1,8 @@
+[
+    {"name": "Researcher", "code":"researcher"},
+    {"name": "Organization", "code":"organization"},
+    {"name": "Developer", "code":"developer"},
+    {"name": "Student", "code":"student"},
+
+    {"name": "Other", "code":"otherInstitution"}
+]

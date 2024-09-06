@@ -1,0 +1,26 @@
+[
+    {"name": "Agriculture forecasting", "code": "AF"},
+    {"name": "Assessments and taxation", "code": "AT"},
+    {"name": "Biodiversity conservation", "code": "BC"},
+    {"name": "Climate science", "code": "CSC"},
+    {"name": "Coastal science", "code": "CSMM"},
+    {"name": "Cryospheric science", "code": "CS"},
+    {"name": "Education", "code": "EUC"},
+    {"name": "Engineering", "code": "ECS"},
+    {"name": "Environmental regulation", "code": "ER"},
+    {"name": "Fire science", "code": "FSM"},
+    {"name": "Forest science", "code": "FSM"},
+    {"name": "Geology", "code": "G"},
+    {"name": "land cover change", "code": "LUCC"},
+    {"name": "Law enforcement", "code": "LE"},
+    {"name": "management", "code": "RSM"},
+    {"name": "Rural planning and development", "code": "RPD"},
+    {"name": "Software development", "code": "SD"},
+    {"name": "Telecommunications", "code": "TC"},
+    {"name": "Technical training", "code": "TT"},
+    {"name": "Transportation", "code": "T"},
+    {"name": "Urban planning and development", "code": "UPD"},
+    {"name": "Urbanization", "code": "U"},
+    {"name": "Water resources", "code": "WR"}
+  ]
+  

@@ -1,0 +1,57 @@
+{% extends 'main.html' %}
+
+{% load static %}
+{% block content %}
+
+<html lang="en" data-bs-theme="auto">
+  <head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     <meta name="description" content="">
+     <meta name="author" content="">
+     <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+
+    <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">  
+    <link href="{% static 'css/dashboard.css'%}" rel="stylesheet">
+    <link href="{% static 'css/main.css'%}" rel="stylesheet">
+     <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/> 
+     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+     <link   href="{% static 'css/bootstrap.min.css'%}"  rel="stylesheet">
+     <link   href="{% static 'css/carousel.css'%}"  rel="stylesheet">
+     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/carousel/">  
+     
+     
+     <!-- CSS -->
+         <style>
+ .mySlides {display:none;}
+ .center {text-align: center;position:absolute; height: 60%; width: 100%; }
+ </style>   
+   <script src="{% static 'js/main.js'%}"></script>
+
+     <title>SSGI</title>
+</head>
+  <body>
+  <main>
+              <div class="row featurette">
+                <div class="col-md-7">
+                  <h2 class="featurette-heading">About Us</h2>
+                  <p class="lead">In May 2022, the Ethiopian Science and Technology Institute (ESSTI) and the Geospatial Information Institute (GII) merged to become the new Space Science and Geospatial Institute (SSGI), which aims to enhance the collective use of space and geospatial technologies and provide better administration. SSGI is a federal governmental institute established with regulation no 511/2022 and works on space science and geospatial sectors.
+
+                    SSGI envisions to fully exploit multidimensional uses of space science and technology in the space and geospatial sectors and be a robust contributor for the national development. It provides support, guidance and leadership in implementing the space policy and strategies in the country. It conducts research, training, and consultancies that support national developmental activities and capacitates utilization, adaption, improvement, and production of space and geospatial products and services. It also ensures the development of space and geospatial infrastructures and technologies for these purposes.
+                    
+                    SSGI has a mandate of lead and coordinate national space science and geospatial activities; create cooperation and partnership with foreign peer institutions; represent Ethiopia in regional and international fora. It encourages and support governmental and private institutions, individuals, researches, professional and civic associations contributing to advance the space and geospatial sector by sharing infrastructure, providing data, consultancy, training, technical and financial support. SSGI has also duties and power to identify, develop and administer special astronomical sited in the country based on the research.</div>
+                <div class="col-md-5">
+                  <img class="featurette-image img-fluid mx-auto"  src="{% static '/images/2.jpg' %}" style="border-radius: 10%; position:sticky; top: 0;" alt="Generic placeholder image">
+                </div>
+              </div>
+          
+    
+            <hr>
+    
+          
+      </main>
+    </body>
+</html>
+{% endblock content %}

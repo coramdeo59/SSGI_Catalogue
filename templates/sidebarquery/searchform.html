@@ -1,0 +1,384 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+<script src="{%static 'js/searchValidate.js'%}"></script>
+<script src="{%static 'js/searchValidate.js'%}"></script>
+<style>
+  .input-field {
+    display: block;
+    margin-bottom: 10px;
+  }
+  .clickable-text {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  .clickable-text:hover {
+    color: darkblue;
+  }
+  
+  .box {
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+  
+}
+
+
+</style>
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js"></script>
+
+<div class="folium-map" id="map_folium" style="top:70"></div>
+
+<div class="d-flex justify-content-start" style="margin-top:10%">
+
+  <ul class="nav nav-tabs" id="myInitialTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link" id="searchButton" data-toggle="tab" href="#" role="tab" aria-controls="tab1" aria-selected="true">Search</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="resultButton" data-toggle="tab" href="#" role="tab" aria-controls="tab2" aria-selected="false">Result</a>
+    </li>
+  </ul>  
+  
+</div>
+
+
+<div style="display:none;">
+  <p id="flag_id" style="display:none;">{{flag}}</p>
+
+  <p id="lat_long_val" style="display:none;">{{ coordinates}}</p>
+  <p id="lat_long_flag" style="display:none;">{{ file_flag }}</p>
+</div>
+
+
+
+
+<div id="resultFormContainer" style="display:none;">
+  <div   id="resultForm" class ="input-group" style="padding: 10px;  font-weight: bold; background-color:rgba(211, 211, 211,0.9);" >
+  
+    <h4 style=" font-size: 25px; text-align: center;">Result</h4>
+    
+        {% if result_value %}
+        <div style="display:flex; align-items: center;">
+          <h4>Download Bucket: <span class="bucket-cont"></span></h4>
+          <button style="margin-left:15px;" class="btn btn-success download-btn">Download All</button>
+        </div>
+        <div style="height:600px; overflow:hidden; overflow-y:auto;" >
+        <ul class="list-group">
+            {% for item in result_value%}
+            <li class="list-group-item ">
+                <div class="box">
+                <div class="row"> 
+                <div class="col-md-6">
+                  <p> Satellite: {{ item.2 }}</p> 
+                  <p> Product level: {{item.3}}</p> 
+                <p> Production Date: {{item.4}}</p> 
+                <p> Cloud Coverage: {{item.5}}</p> 
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <div style="flex-direction:column;width: 100%;display:flex;align-items:center;justify-content:space-between;">
+                    <div style="width: 100%;display:flex;align-items:center;justify-content:space-between;">
+                      <button style="width:100%;margin-right: 5px;font-size: 11px;font-weight: bold;padding: 10px 5px;" class="btn btn-success add-to-bucket" data-id="{{item.0}}"><i class="fa-solid fa-plus"></i> Add</button>
+                    </div>
+                    <div style="margin-top:10px;width: 100%;display:flex;align-items:center;justify-content:space-between;">
+                      <a href="/payments/payment-form?price=50&download_url={{item.6}}" style="color: white;margin-left:5px;"><button style="width:100%;;font-size: 11px;font-weight: bold;padding: 10px 5px;" class="btn btn-primary">Download  <span class="badge" ><i class="glyphicon glyphicon-download" style="color:black;"></i></span></button></a>
+                    </div>
+                  </div>
+                  
+                </div>
+                </div>
+                <div class="col-md-6">
+                <img src="http://localhost:8000/serve_image?image={{item.7}}" alt="image" height="200px">
+                </div>
+              
+            </li>
+            {% endfor %}  
+        </ul>  
+        </div>
+
+        {% else %}
+
+        <p>No results found</p>
+        {% endif %}
+    </div>
+  </div>
+
+<div id="searchFormContainer" style="display: none; width:100%">
+  <form  name ="searchForm" onsubmit="return validateForm();"   id="coordinateForm" class ="input-group"style="padding: 10px; font-weight: bold;" action="{% url 'fill_form' %}" method="post" >{% csrf_token %}
+    <h3>Search</h3>
+    
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link" id="tab1-tab" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">Geocoder</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">KML/Shapefile upload</a>
+      </li>
+    </ul>
+    <div id="contentContainer">
+      <div id="searchGeocoder" class=" active " style="display: none; ">
+        <div class="input-group">
+         
+          <label>Coordinates:</label>
+          <input type="text" id="Latitude" name="Latitude" style="margin-right:20px" >
+          <span id="Lat" style="color: red;"></span>
+          <input type="text" id="Longitude" name="Longitude" >
+          <span id="Long" style="color: red;"></span>
+          <button type="button" id="addCoordinate" class="btn btn-primary ml-2">Add</button>
+          <br><br> 
+      
+            <div class="form-group">
+              <div class="d-flex">
+                <label for="dropdown">Dropdown:</label>
+                <select id="dropdown" class="form-control">
+                  <option value="polygon">Polygon</option>
+                  <option value="circle">Circle</option>
+                </select>
+    
+                <button type="button" id="chooseFromMapButton" class="btn btn-primary ml-2">Choose from Map</button>
+              </div>
+              <p>Select coordinates from the map, and once you're done, click "Search" again.</p>
+              </div>
+            </div>
+         <div id="coordinateFieldsContainer"></div>
+    
+        <label for="inputEmail4">Acquisition Time</label>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="start_date">From</label>
+            <input type="date" class="form-control" id="start_date"  name="initialdate_value"  >
+            <span id="startDate" style="color: red;"></span>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="end_date">To</label>
+            <input type="date" class="form-control" id="end_date" name="finaldate_value" >
+            <span id="endDate" style="color: red;"></span>
+          </div>
+        </div>
+        <label for="cars">Satellite Type</label>
+            <div class="form-row"> 
+              <div class="form-group col-md-6">  
+                   <select name="Satellite_Type"   class="form-control" id="Satellite_Type">
+                    <option value="ETRSS-1">ETRSS-1</option>
+                    <option value="Superview">Superview</option>
+                    <option value="opel">Opel</option>
+                    <option value="GF-1">GF-1</option>
+                    <option value="GF-3">GF-3</option>
+                    <option value="CBERS-4">CBERS-4</option>
+                </select>
+              </div>
+              </div>
+              <div class="form-row"> 
+                <div class="form-group col-md-6">
+                  <label for="cars">Product Type</label>   
+                     <select name="Product_level"   class="form-control" id="Product_Type">
+                      <option value="LEVEL2B">Level 2B</option>
+                      <option value="LEVEL2B">Level 2B</option>
+                     
+                  </select>
+                </div>
+          <div class="form-group col-md-6">
+            <label for="Image_Type">Image Type</label>
+            <select name="Image_Type" class="form-control" id="Image_Type">
+              <option value="Standard">Standard</option>
+              <option value="Standard">Standard</option>
+            </select>
+          </div>
+        </div>
+      
+       
+          <div class="form-row"> 
+            
+            <label for="cars">Cloud Cover Percentage      </label>
+            <input name="cloudCoverage" type="range" id="my-slider" min="0" max="100" value="50" oninput="slider()">
+            <div id="slider-value">0%-100%</div>
+        
+      </div>
+      <!-- Script -->
+      <script>const mySlider = document.getElementById("my-slider");
+          const sliderValue = document.getElementById("slider-value");
+          
+          function slider(){
+              valPercent = (mySlider.value / mySlider.max)*100;
+              mySlider.style.background = `linear-gradient(to right, rgb(10, 143, 220) ${valPercent}%, #d5d5d5 ${valPercent}%)`;
+              sliderValue.textContent = mySlider.value;
+          }
+          slider();</script>
+        <button type="submit" id="submitButton"  value="Submit"style="margin-right:80px" class ="btn-primary" >Submit</button>
+        <button type="reset"  value="Reset" class ="btn-primary">Reset</button>
+      
+       
+      </form>
+    </div>
+    
+      
+      <div id="searchShapefile" style="display: none;">
+        <form action="{% url 'serve_lat_long' %}" enctype="multipart/form-data" method="post" >{% csrf_token %}
+        Files are limited to one record containing one polygon or line string with a maximum of 500 points.
+        <div class="form-row"> 
+          <div class="form-group col-md-6">  
+               <select name="KMLorShapefile"   class="form-control" id="KMLorShapefile">
+                <option value="kml_or_kmz">KML/KMZ</option>
+                <option value="Shapefile">Shapefile</option>
+    
+                </select>
+            </div>
+          </div>
+        <div class="form-group">
+          <label for="fileInput">Select File:</label>
+          <input type="file" class="form-control-file" id="fileInput"   name="fileInput" >
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+      </form>
+      </div>
+    </div>
+  </form>
+  </div> {% comment %}  end of searchFormContainer {% endcomment %}
+
+  
+  <script>
+    $(document).ready(function() {
+      $('#tab1-tab').on('click', function() {
+        $('#searchGeocoder').show();
+        $('#searchShapefile').hide();
+        console.log("searchGeocoder")
+      });
+  
+      $('#tab2-tab').on('click', function() {
+        $('#searchShapefile').show();
+        $('#searchGeocoder').hide();
+        console.log("searchShapefile")
+  
+      });
+    });
+
+    const addToBucketBtns = document.querySelectorAll('.add-to-bucket')
+    let bucket = []
+
+    addToBucketBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if(bucket.indexOf(btn.dataset.id) != -1){
+          delete bucket[bucket.indexOf(btn.dataset.id)]
+          btn.innerHTML = '<i class="fa-solid fa-plus"></i> Add'
+        }else{
+          bucket.push(btn.dataset.id)
+          btn.innerHTML = '<i class="fa-solid fa-minus"></i> Remove'
+        }
+        BucketUpdate(bucket)
+      })
+    })
+
+    function BucketUpdate(bucketList){
+      const bucketCont = document.querySelector('.bucket-cont')
+
+      let count = 0
+      bucket.forEach(elem => {
+        if(elem){
+          count++
+        }
+      })
+      bucketCont.textContent = `${count} Images`
+    }
+
+    document.querySelector('.download-btn').addEventListener('click', () => {
+      let count = 0
+      bucket.forEach(elem => {
+        if(elem){
+          count++
+        }
+      })
+      if(count > 0){
+        window.location.replace(`http://localhost:8000/payments/payment-form?price=${50*count}`)
+
+      }
+    })
+  </script>
+  <script>
+    $(document).ready(function() {
+      $('#searchButton').on('click', function() {
+
+        
+        $('#searchFormContainer').show();
+        $('#resultFormContainer').hide();
+        console.log("searchFormContainer")
+      });
+  
+      $('#resultButton').on('click', function() {
+        
+        $('#searchFormContainer').hide();
+        $('#resultFormContainer').show();
+        console.log("resultFormContainer")
+      });
+      });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  #map_folium {
+      position: fixed;
+      width: 100.0%;
+      height: 100.0%;
+      /* z-index: -1; */
+      }
+  .leaflet-container { font-size: 1rem; }
+  .nav-tabs .nav-link {
+    background-color: black;
+    color: white;
+  }
+  .nav-tabs .nav-link.active,
+  .nav-tabs .nav-link:focus,
+  .nav-tabs .nav-link:hover {
+    background-color: black;
+    color: white;
+  }
+</style>
+
+<script src="{%static 'js/search.js'%}">
+  
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+ 
+ 
+  
+   </script>
+
+
+
+
+
+
+
+
+{% endblock content %}

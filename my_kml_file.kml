@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Folder>
+	<name>お気に入り</name>
+	<open>1</open>
+	<Style>
+		<ListStyle>
+			<listItemType>check</listItemType>
+			<ItemIcon>
+				<state>open</state>
+				<href>:/mysavedplaces_open.png</href>
+			</ItemIcon>
+			<ItemIcon>
+				<state>closed</state>
+				<href>:/mysavedplaces_closed.png</href>
+			</ItemIcon>
+			<bgColor>00ffffff</bgColor>
+			<maxSnippetLines>2</maxSnippetLines>
+		</ListStyle>
+	</Style>
+	<Placemark>
+		<name>北海道網走市</name>
+		<address>日本, 北海道網走市</address>
+		<Snippet maxLines="0"></Snippet>
+		<LookAt>
+			<longitude>144.273392</longitude>
+			<latitude>44.020634</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<range>33502.433594</range>
+		</LookAt>
+		<styleUrl>#style2</styleUrl>
+		<Point>
+			<coordinates>144.273392,44.020634,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>北海道釧路市</name>
+		<address>日本, 北海道釧路市</address>
+		<Snippet maxLines="0"></Snippet>
+		<LookAt>
+			<longitude>144.381363</longitude>
+			<latitude>42.984856</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<range>136603.671875</range>
+		</LookAt>
+		<styleUrl>#style3</styleUrl>
+		<Point>
+			<coordinates>144.381363,42.984856,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>北海道函館市</name>
+		<address>日本, 北海道函館市</address>
+		<Snippet maxLines="0"></Snippet>
+		<LookAt>
+			<longitude>140.728806</longitude>
+			<latitude>41.768791</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<range>69537.773438</range>
+		</LookAt>
+		<styleUrl>#style4</styleUrl>
+		<Point>
+			<coordinates>140.728806,41.768791,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>北海道旭川市</name>
+		<address>日本, 北海道旭川市</address>
+		<Snippet maxLines="0"></Snippet>
+		<LookAt>
+			<longitude>142.364822</longitude>
+			<latitude>43.770638</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<range>67333.664062</range>
+		</LookAt>
+		<styleUrl>#style7</styleUrl>
+		<Point>
+			<coordinates>142.364822,43.770638,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>北海道帯広市</name>
+		<address>日本, 北海道帯広市</address>
+		<Snippet maxLines="0"></Snippet>
+		<LookAt>
+			<longitude>143.196106</longitude>
+			<latitude>42.923901</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<range>68276.226562</range>
+		</LookAt>
+		<styleUrl>#style10</styleUrl>
+		<Point>
+			<coordinates>143.196106,42.923901,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>北海道札幌市</name>
+		<address>日本, 北海道札幌市</address>
+		<Snippet maxLines="0"></Snippet>
+		<LookAt>
+			<longitude>141.35437</longitude>
+			<latitude>43.062096</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<range>68123.414062</range>
+		</LookAt>
+		<styleUrl>#style6</styleUrl>
+		<Point>
+			<coordinates>141.35437,43.062096,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>北海道北見市</name>
+		<address>日本, 北海道北見市</address>
+		<Snippet maxLines="0"></Snippet>
+		<LookAt>
+			<longitude>143.894272</longitude>
+			<latitude>43.807922</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<range>67291.789062</range>
+		</LookAt>
+		<styleUrl>#style1</styleUrl>
+		<Point>
+			<coordinates>143.894272,43.807922,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>北海道室蘭市</name>
+		<address>日本, 北海道室蘭市</address>
+		<Snippet maxLines="0"></Snippet>
+		<LookAt>
+			<longitude>140.973801</longitude>
+			<latitude>42.315231</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<range>17219.005859</range>
+		</LookAt>
+		<styleUrl>#style9</styleUrl>
+		<Point>
+			<coordinates>140.973801,42.315231,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>東京タワー(日本電波塔株式会社)</name>
+		<address>日本&lt;br/&gt;〒105-0011 東京都港区 芝公園4-2-8</address>
+		<Snippet maxLines="2">日本, 〒105-0011 東京都港区 芝公園4-2-803-3433-5299</Snippet>
+		<styleUrl>#style5</styleUrl>
+		<ExtendedData>
+			<Data name="balloon_text">
+				<value>$[name]&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;レビュー 73日本〒105-0011 東京都港区 芝公園4-2-803-3433-5299tokyotower.co.jp東京タワー &amp;#32;&amp;#32; - &amp;#32;評価なし&amp;#32; - &amp;#32;JTBパブリッシング&amp;#32; - &amp;#32;2010年7月13日高さ333m。1958年(昭和33)の完成以来、言わずと知れた東京観光のシンボル。大展望台(地上150m)と特別展望台(地上250m)からは、富士山や筑波山、東京の街 ... rurubu.com で全文を見る &amp;raquo;日本のシンボルタワー！ &amp;#32;&amp;#32; - &amp;#32;トリップアドバイザー会員&amp;#32; - &amp;#32;2010年4月22日東京タワーは楽しいです。 なんといっても大パノラマの展望台！ 天気の良い日は遥か遠くまで見渡せます。 下を見ると、人も車もおもちゃの様に小さく ... tripadvisor.jp で全文を見る &amp;raquo;日本電波塔 &amp;#32;&amp;#32; - &amp;#32;トリップアドバイザー会員&amp;#32; - &amp;#32;2009年12月29日道行く人が携帯とかカメラを持って東京タワー側に向けてる率が高いと、変わったライトアップをしていることが多いのだけど、冬場は暗くなるのが早いから ... tripadvisor.jp で全文を見る &amp;raquo;全73件のレビュー&amp;#160;&amp;#187;&amp;#160;&amp;#160;$[geDirections]</value>
+			</Data>
+			<Data name="contents">
+				<value>東京タワー(日本電波塔株式会社)</value>
+			</Data>
+			<Data name="city">
+				<value>〒105-0011 東京都港区 芝公園4-2-8</value>
+			</Data>
+		</ExtendedData>
+		<Point>
+			<coordinates>139.745407,35.658703,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>神奈川県横浜市</name>
+		<address>日本, 神奈川県横浜市</address>
+		<Snippet maxLines="0"></Snippet>
+		<LookAt>
+			<longitude>139.638031</longitude>
+			<latitude>35.443707</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<range>37946.695312</range>
+		</LookAt>
+		<styleUrl>#style8</styleUrl>
+		<Point>
+			<coordinates>139.638031,35.443707,0</coordinates>
+		</Point>
+	</Placemark>
+</Folder>
+</kml>

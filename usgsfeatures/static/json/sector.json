@@ -1,0 +1,12 @@
+[
+    {"name": "Ethiopian Federal Government", "code":"EFG"},
+    {"name": "Ethiopian State/Provincial Departmental Government", "code":"ESPDG"},
+    {"name": "Ethiopian Local Government", "code":"ELG"},
+    {"name": "Tribe/Nation/Indigenous Group", "code":"TNIG"},
+    {"name": "Non-Ethiopian Federal/National Government", "code":"NEFNG"},
+    {"name": "Academic Institution", "code":"academic_institution"},
+    {"name": "Non-profit Organization", "code":"NPO"},
+    {"name": "Private Business", "code":"private_business"},
+    {"name": "General Public", "code":"general_public"},
+    {"name": "Other", "code":"otherSector"}
+]

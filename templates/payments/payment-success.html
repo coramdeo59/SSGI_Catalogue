@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Success</title>
+</head>
+<body>
+    <h1>Payment Successful!</h1>
+    <h4>Click Download and stay on the page while your download is being processed.</h4>
+    {% if download_link %}
+        <!-- <p>Your download link: <a href="{{ download_link }}">{{ download_link }}</a></p> -->
+        <p>
+            <a href="{% url 'download_zip' download_link %}" style="color: white; margin-left: 5px;">
+                <button style="width: 100%; font-size: 11px; font-weight: bold; padding: 10px 5px;" class="btn btn-primary">
+                    Download <span class="badge"><i class="glyphicon glyphicon-download" style="color: black;"></i></span>
+                </button>
+            </a>
+        </p>
+        
+    {% else %}
+        <p>Your payment was successful, but no download link is available.</p>
+    {% endif %}
+</body>
+</html>

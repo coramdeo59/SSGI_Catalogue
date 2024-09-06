@@ -1,0 +1,100 @@
+<!-- bookmarks.html -->
+{% load static%}
+<head>
+    <meta charset="utf-8">  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        
+        <title>SSGI</title>
+        
+        <!-- CSS -->
+        <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">  
+       <link href="{% static 'css/dashboard.css'%}" rel="stylesheet">
+       <link href="{% static 'css/main.css'%}" rel="stylesheet">
+       <link href="{% static 'css/base.css'%}" rel="stylesheet">
+
+       <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+        crossorigin=""/>
+        <link   href="{% static 'css/carousel.css'%}"  rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+        <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+</head>
+<header class="fixed-top">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+
+    <a href="{% url 'home' %}">
+      <img src="{% static '/images/SSGI.png' %}" height="10%" width="13%"  ></a>    <!-- <a href="#"><h2 style="color: white;font-family: Georgia, Arial and Helvetica;">SSGI  </h2></a>
+    <p style="font-family: Georgia, Arial and Helvetica;color: white;">Space Science and Geospatial Institute</p> -->
+  
+    <div class="navbar-collapse" style="margin-right:70px;">
+      <ul class="navbar-nav mr-auto"></ul>
+  
+      <div class="dropdown">
+        
+    
+        <div class="menu-icon">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+      </div> <div class="sidebar">
+        <ul class="sidebarMenuInner">
+            <li><form action="" method="POST">
+              {% csrf_token %}
+              <input class="dropdown-item" type="submit" value="User Preferences"/>
+            </form></li>
+            <li><form action="about" method="POST">
+              {% csrf_token %}
+              <input class="dropdown-item" type="submit" value="About"/>
+            </form></li>
+            <li><form action="" method="POST">
+              {% csrf_token %}
+              <input class="dropdown-item" type="submit" value="News"/>
+            </form></li>
+            <li><form action="{% url 'logout' %}" method="POST">
+              {% csrf_token %}
+              <input class="dropdown-item" type="submit" value="Sign Out"/>
+            </form></li>
+            <li><form action="feedback" method="POST">
+              {% csrf_token %}
+              <input class="dropdown-item" type="submit" value="Feedback"/>
+             </form></li>
+             <li><form action="/bookmarks/" method="POST">
+              {% csrf_token %}
+              <input class="dropdown-item" type="submit" value="Bookmarks"/>
+             </form></li>
+          </ul>  
+          </div>
+          <script>
+    
+            document.querySelector('.menu-icon').addEventListener('click', function() {
+                document.querySelector('.sidebar').classList.toggle('active');
+            });</script>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<h1 style="margin-top:55px;margin-bottom: 0;margin-left:55px;">Bookmarks</h1>
+    <div>
+          {% for bookmark in  bookmarks %}
+              <div style="margin-top:10px;display:flex;width: 90%;background-color: #e2e2e2;padding: 20px;border-radius:50px;">
+                {% for thumb in final %}
+                  {% if thumb.id == bookmark.image_id %}
+                    <img src="{% url 'serve_image' thumb.path %}" style="border-radius:10px;" width="200" height="200"/>
+                  {% endif %}
+                {% endfor %}
+                <div style="margin-left: 25px;">
+                    <p style="font-size:24px;"><a href="{% url 'footprint' bookmark.id %}">{{ bookmark.description }}</a></p>
+                    <p>Created at: {{ bookmark.created_at }}</p>
+                </div>
+              </div>
+          {% endfor %}
+    </div>
+{% if not bookmarks %}
+    <div style="margin:55px auto;display:flex;width: 90%;background-color: #e2e2e2;padding: 20px;border-radius:50px;">
+        <p>No bookmarks found.</p>
+    </div>
+{% endif %}

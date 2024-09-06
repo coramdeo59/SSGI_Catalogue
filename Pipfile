@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+psycopg = "*"
+dotenv = "*"
+load-dotenv = "*"
+psycopg2 = "*"
+validate-email = "*"
+six = "*"
+ipython = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
