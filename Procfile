@@ -1,1 +1,1 @@
-web: gunicorn ssgi_catalogue.wsgi:application
+web: gunicorn usgsfeatures.wsgi:application
